@@ -500,6 +500,11 @@ typedef NS_OPTIONS(NSUInteger, WKDisplayCaptureSurfaces) {
     WKDisplayCaptureSurfaceWindow = 0x2,
 };
 
+// typedef NS_ENUM(NSUInteger, Loginstatus) {
+//     LoggedIn,
+//     LoggedOut,
+// };
+
 /*! @abstract The type(s) of displays being captured on a web page.
  @discussion @link WKWebView @/link is key-value observing (KVO) compliant
  for this property.
@@ -832,6 +837,8 @@ typedef NS_OPTIONS(NSUInteger, WKDisplayCaptureSurfaces) {
 - (void)_simulateMouseEnter:(NSEvent *)event WK_API_AVAILABLE(macos(15.0));
 
 - (void)_setFont:(NSFont *)font sender:(id)sender WK_API_AVAILABLE(macos(13.3));
+
+- (void)isLoggedIn:(void (^)(BOOL))completionHandler WK_API_AVAILABLE(macos(WK_MAC_TBA));
 
 @end
 

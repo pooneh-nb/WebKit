@@ -1791,6 +1791,13 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     _impl->setFontForWebView(font, sender);
 }
 
+- (void)isLoggedIn:(void (^)(BOOL))completionHandler 
+{
+    _page->isLoggedIn([completionHandler = makeBlockPtr(completionHandler)](BOOL loginStatus) {
+        completionHandler(loginStatus);
+    });
+}
+
 @end // WKWebView (WKPrivateMac)
 
 #endif // PLATFORM(MAC)

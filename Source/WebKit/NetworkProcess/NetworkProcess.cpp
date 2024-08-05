@@ -860,6 +860,17 @@ void NetworkProcess::scheduleStatisticsAndDataRecordsProcessing(PAL::SessionID s
     }
 }
 
+void NetworkProcess::isLoggedIn(PAL::SessionID sessionID, WebCore::RegistrableDomain&& domain, CompletionHandler<void(bool)>&& completionHandler)
+{
+     if (auto* networkSession = this->networkSession(sessionID)) {
+        if (auto* resourceLoadStatistics = networkSession->resourceLoadStatistics()) {
+            resourceLoadStatistics->isLoggedIn(WTFMove(domain), WTFMove(completionHandler));
+            return;
+        }
+    }
+    completionHandler(false);
+}
+
 void NetworkProcess::statisticsDatabaseHasAllTables(PAL::SessionID sessionID, CompletionHandler<void(bool)>&& completionHandler)
 {
     if (auto* session = networkSession(sessionID)) {

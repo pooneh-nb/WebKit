@@ -14441,6 +14441,13 @@ void WebPageProxy::simulateClickOverFirstMatchingTextInViewportWithUserInteracti
     sendWithAsyncReply(Messages::WebPage::SimulateClickOverFirstMatchingTextInViewportWithUserInteraction(WTFMove(targetText)), WTFMove(completion));
 }
 
+ void WebPageProxy::isLoggedIn(CompletionHandler<void(bool)>&& completion) 
+ {
+    auto domain = RegistrableDomain(m_mainFrame->url());
+
+    websiteDataStore().protectedNetworkProcess()->sendWithAsyncReply(Messages::NetworkProcess::IsLoggedIn(m_websiteDataStore->sessionID(), domain), WTFMove(completion));
+ }
+
 void WebPageProxy::didAdjustVisibilityWithSelectors(Vector<String>&& selectors)
 {
     m_uiClient->didAdjustVisibilityWithSelectors(*this, WTFMove(selectors));

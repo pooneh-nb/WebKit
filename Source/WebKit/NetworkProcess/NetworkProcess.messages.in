@@ -248,4 +248,5 @@ messages -> NetworkProcess LegacyReceiver {
     SetPersistedDomains(PAL::SessionID sessionsID, HashSet<WebCore::RegistrableDomain> domains)
 
     GetAppBadgeForTesting(PAL::SessionID sessionID) -> (std::optional<uint64_t> badge)
+    IsLoggedIn(PAL::SessionID sessionsID, WebCore::RegistrableDomain domain) -> (bool isLoggedIn)
 }

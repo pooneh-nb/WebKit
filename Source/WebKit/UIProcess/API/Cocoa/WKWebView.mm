@@ -3979,6 +3979,13 @@ static inline OptionSet<WebCore::LayoutMilestone> layoutMilestones(_WKRenderingP
     });
 }
 
+// - (void)isLoggedIn:(void (^)(BOOL))completionHandler 
+// {
+//     _page->isLoggedIn([completionHandler = makeBlockPtr(completionHandler)](BOOL loginStatus) {
+//         completionHandler(loginStatus);
+//     });
+// }
+
 - (_WKPaginationMode)_paginationMode
 {
     switch (_page->paginationMode()) {
